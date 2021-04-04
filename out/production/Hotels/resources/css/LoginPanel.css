@@ -1,0 +1,11 @@
+#main-text {
+    -fx-font-size: 24;
+    -fx-text-alignment: center;
+}
+
+VBox {
+    -fx-alignment: center;
+    -fx-padding: 80;
+    -fx-spacing: 10;
+    -fx-font-size: 14;
+}
