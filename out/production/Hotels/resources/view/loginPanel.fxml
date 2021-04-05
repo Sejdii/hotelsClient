@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+<VBox xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.sadzbr.controller.LoginPanelController"
+      styleClass="container, display-center"
+            >
+    <Text styleClass="h1, text-center" text="ZALOGUJ SIĘ"/>
+    <TextField fx:id="loginField" promptText="Login"/>
+    <PasswordField promptText="Hasło"/>
+    <Button styleClass="btn" text="Zaloguj się" onAction="#handleSubmitButtonAction"/>
+    <Text styleClass="error-bar" id="error-container" fx:id="errorContainer"/>
+
+    <stylesheets>
+        <URL value="@../css/Main.css"/>
+    </stylesheets>
+</VBox>

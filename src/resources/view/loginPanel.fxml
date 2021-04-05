@@ -11,15 +11,15 @@
 <VBox xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="com.sadzbr.controller.LoginPanelController"
+      styleClass="container, display-center"
             >
-    <Text id="main-text" text="ZALOGUJ SIĘ"/>
-    <TextField promptText="Login"/>
+    <Text styleClass="h1, text-center" text="ZALOGUJ SIĘ"/>
+    <TextField fx:id="loginField" promptText="Login"/>
     <PasswordField promptText="Hasło"/>
-    <Button text="Zaloguj się" onAction="#handleSubmitButtonAction"/>
+    <Button styleClass="btn" text="Zaloguj się" onAction="#handleSubmitButtonAction"/>
     <Text styleClass="error-bar" id="error-container" fx:id="errorContainer"/>
 
     <stylesheets>
-        <URL value="@../css/LoginPanel.css"/>
         <URL value="@../css/Main.css"/>
     </stylesheets>
 </VBox>

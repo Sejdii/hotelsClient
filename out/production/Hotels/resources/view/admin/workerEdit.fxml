@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.sadzbr.controller.WorkerEditController"
+      styleClass="container"
+>
+
+    <TableView/>
+    <GridPane styleClass="button-grid">
+        <Button styleClass="button-grid-button" text="Edytuj" GridPane.columnIndex="0"/>
+        <Button styleClass="button-grid-button" text="Usuń" GridPane.columnIndex="1"/>
+        <Button styleClass="button-grid-button" text="Dodaj nowego" GridPane.columnIndex="2"/>
+    </GridPane>
+
+    <stylesheets>
+        <URL value="@../../css/Main.css"/>
+    </stylesheets>
+</VBox>

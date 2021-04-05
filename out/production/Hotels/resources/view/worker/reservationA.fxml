@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.sadzbr.controller.ReservationController"
+            >
+
+    <top>
+        <VBox>
+            <Text text="NAZWA HOTELU" styleClass="h1"/>
+            <Text text="adres hotelu" />
+        </VBox>
+    </top>
+    <center>
+        <GridPane hgap="10" vgap="10" styleClass="container">
+            <TextField GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="form-control" promptText="Liczba osób" />
+            <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="choice-box" value="Pakiet 1">
+                <String fx:value="Pakiet 1"/>
+                <String fx:value="Pakiet 2"/>
+                <String fx:value="Pakiet 3"/>
+            </ChoiceBox>
+
+            <DatePicker promptText="Data przyjazdu" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <DatePicker promptText="Data odjazdu" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+            <Button text="Sprawdź dostępność" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        </GridPane>
+    </center>
+
+    <stylesheets>
+        <URL value="@../../css/Main.css"/>
+    </stylesheets>
+
+</BorderPane>

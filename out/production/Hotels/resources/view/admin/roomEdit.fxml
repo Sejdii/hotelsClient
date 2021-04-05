@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.sadzbr.controller.RoomEditController"
+      prefHeight="400.0" prefWidth="600.0"
+      styleClass="container">
+
+    <ChoiceBox styleClass="choice-box" value="Hotel 1" >
+        <String fx:value="Hotel 1"/>
+        <String fx:value="Hotel 2"/>
+        <String fx:value="Hotel 3"/>
+    </ChoiceBox>
+
+    <HBox>
+        <ChoiceBox styleClass="choice-box" value="Pokój 1" >
+            <String fx:value="Pokój 1"/>
+            <String fx:value="Pokój 2"/>
+            <String fx:value="Pokój 3"/>
+        </ChoiceBox>
+        <TextField promptText="Cena" styleClass="form-control" />
+    </HBox>
+
+    <Button text="Zatwierdź"/>
+
+    <stylesheets>
+        <URL value="@../../css/Main.css"/>
+    </stylesheets>
+
+</VBox>
