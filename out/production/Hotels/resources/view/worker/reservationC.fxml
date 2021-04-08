@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+<?import javafx.scene.text.Text?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.sadzbr.controller.ReservationController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <top>
+        <VBox>
+            <Text text="NAZWA HOTELU" styleClass="h1"/>
+            <Text text="adres hotelu" />
+        </VBox>
+    </top>
+
+    <center>
+        <VBox styleClass="container, display-center">
+            <Text text="Do zapłaty: X"  />
+
+            <TextField promptText="Podsumowanie zamówienia" minHeight="250" />
+
+            <ChoiceBox value="Gotówka">
+                <String fx:value="Gotówka"/>
+                <String fx:value="Karta płatnicza"/>
+                <String fx:value="BLIK"/>
+            </ChoiceBox>
+
+            <Button text="Zatwierdź" />
+        </VBox>
+    </center>
+
+    <stylesheets>
+        <URL value="@../../css/Main.css"/>
+    </stylesheets>
+
+</BorderPane>

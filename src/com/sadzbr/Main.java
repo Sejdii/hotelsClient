@@ -31,10 +31,21 @@ public class Main extends Application {
         sceneController.addScene("admin/roomEdit", FXMLLoader.load(getClass().getResource(Resource.view("admin/roomEdit"))));
         sceneController.addScene("worker/reservationA", FXMLLoader.load(getClass().getResource(Resource.view("worker/reservationA"))));
         sceneController.addScene("worker/reservationB", FXMLLoader.load(getClass().getResource(Resource.view("worker/reservationB"))));
+        sceneController.addScene("worker/reservationC", FXMLLoader.load(getClass().getResource(Resource.view("worker/reservationC"))));
 
-        sceneController.activate("worker/reservationB");
+        sceneController.activate("loginPanel");
 
+        /* SCENE CONTROL TOOL WINDOW */
 
+        Parent toolRoot = FXMLLoader.load(getClass().getResource(Resource.view("sceneControlTool")));
+        Scene toolScene = new Scene(toolRoot, 300, 200);
+
+        Stage toolStage = new Stage();
+        toolStage.setTitle("SCENE CONTROL TOOL");
+        toolStage.setMaxHeight(200);
+        toolStage.setMaxWidth(300);
+        toolStage.setScene(toolScene);
+        toolStage.show();
     }
 
     public static void main(String[] args) {
