@@ -10,7 +10,7 @@
 <?import java.net.URL?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.sadzbr.controller.ReservationController"
+            fx:controller="com.sadzbr.controller.ReservationBController"
 >
 
     <top>
@@ -21,26 +21,29 @@
     </top>
     <center>
         <GridPane hgap="10" vgap="10" styleClass="container, display-center">
-            <ChoiceBox GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="0" styleClass="choice-box" value="Pakiet 1">
-                <String fx:value="Pakiet 1"/>
-                <String fx:value="Pakiet 2"/>
-                <String fx:value="Pakiet 3"/>
+            <ChoiceBox GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="0" styleClass="choice-box" value="Pokój 1">
+                <String fx:value="Pokój 1"/>
+                <String fx:value="Pokój 2"/>
+                <String fx:value="Pokój 3"/>
             </ChoiceBox>
 
-            <TextField promptText="Imię" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <TextField promptText="Nazwisko" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.columnSpan="2" />
+            <TextField promptText="Adres e-mail" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2" fx:id="email" />
+            <CheckBox text="Newsletter" GridPane.columnIndex="2" GridPane.rowIndex="1" />
 
-            <TextField promptText="Miasto" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-            <TextField promptText="Kod pocztowy" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.columnSpan="2" />
+            <TextField promptText="Imię" GridPane.columnIndex="0" GridPane.rowIndex="2" fx:id="name" />
+            <TextField promptText="Nazwisko" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.columnSpan="2" fx:id="surname" />
 
-            <TextField promptText="Ulica" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-            <TextField promptText="Nr domu" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField promptText="Nr mieszkania" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <TextField promptText="Miasto" GridPane.columnIndex="0" GridPane.rowIndex="3" fx:id="city" />
+            <TextField promptText="Kod pocztowy" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.columnSpan="2" fx:id="postCode" />
 
-            <TextField promptText="Adres e-mail" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2"  />
-            <CheckBox text="Newsletter" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <TextField promptText="Ulica" GridPane.columnIndex="0" GridPane.rowIndex="4" fx:id="street" />
+            <TextField promptText="Nr domu" GridPane.columnIndex="1" GridPane.rowIndex="4" fx:id="homeNr" />
+            <TextField promptText="Nr mieszkania" GridPane.columnIndex="2" GridPane.rowIndex="4" fx:id="flatNr" />
 
-            <Button text="Zarezerwuj" GridPane.columnSpan="2" GridPane.rowIndex="5" GridPane.columnIndex="0" styleClass="button-grid-button" />
+            <Button text="Zarezerwuj" GridPane.columnSpan="2" GridPane.rowIndex="5" GridPane.columnIndex="0" styleClass="button-grid-button" onAction="#handleReservationButton" />
+            <Button text="Powrót" GridPane.rowIndex="5" GridPane.columnIndex="2" styleClass="button-grid-button" onAction="#handleReturnButton"/>
+
+            <Text styleClass="error-bar" fx:id="errorHandler" GridPane.columnIndex="0" GridPane.rowIndex="6" GridPane.columnSpan="2"/>
         </GridPane>
     </center>
 

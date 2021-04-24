@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Text?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.sadzbr.controller.ReservationController"
+            fx:controller="com.sadzbr.controller.ReservationCController"
             prefHeight="400.0" prefWidth="600.0">
 
     <top>
@@ -24,15 +24,18 @@
         <VBox styleClass="container, display-center">
             <Text text="Do zapłaty: X"  />
 
-            <TextField promptText="Podsumowanie zamówienia" minHeight="250" />
+            <TextField promptText="Podsumowanie zamówienia" minHeight="250" fx:id="summary" alignment="TOP_LEFT" />
 
-            <ChoiceBox value="Gotówka">
+            <ChoiceBox value="Gotówka" fx:id="paymentMethod">
                 <String fx:value="Gotówka"/>
                 <String fx:value="Karta płatnicza"/>
                 <String fx:value="BLIK"/>
             </ChoiceBox>
 
-            <Button text="Zatwierdź" />
+            <GridPane styleClass="container" hgap="25">
+                <Button text="Zatwierdź" styleClass="button-grid-button" GridPane.columnIndex="0" />
+                <Button text="Popraw" styleClass="button-grid-button" GridPane.columnIndex="1" onAction="#handleChangeButton" />
+            </GridPane>
         </VBox>
     </center>
 
