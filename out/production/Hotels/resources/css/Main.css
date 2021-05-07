@@ -20,7 +20,7 @@
     -fx-alignment: right;
 }
 
-.container {
+.main-container {
     -fx-padding: 80;
     -fx-spacing: 10;
     -fx-font-size: 16;
@@ -50,4 +50,12 @@
 
 .form-control {
     -fx-min-width: 300;
+}
+
+.worker-menubar {
+    -fx-font-size: 14;
+}
+
+.table-view {
+    -fx-min-height: 300px;
 }

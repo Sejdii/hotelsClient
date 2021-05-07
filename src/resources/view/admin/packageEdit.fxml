@@ -10,19 +10,22 @@
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.sadzbr.controller.PackageEdit"
-      styleClass="container"
 >
-    <ChoiceBox styleClass="choice-box" value="Hotel 1" >
-        <String fx:value="Hotel 1"/>
-        <String fx:value="Hotel 2"/>
-        <String fx:value="Hotel 3"/>
-    </ChoiceBox>
-    <TableView/>
-    <GridPane styleClass="button-grid" BorderPane.alignment="BOTTOM_CENTER">
-        <Button styleClass="button-grid-button" text="Edytuj" GridPane.columnIndex="0"/>
-        <Button styleClass="button-grid-button" text="Usuń" GridPane.columnIndex="1"/>
-        <Button styleClass="button-grid-button" text="Dodaj nowego" GridPane.columnIndex="2"/>
-    </GridPane>
+    <fx:include source="commons/menuBar.fxml"/>
+
+    <VBox styleClass="main-container">
+        <ChoiceBox styleClass="choice-box" value="Hotel 1" >
+            <String fx:value="Hotel 1"/>
+            <String fx:value="Hotel 2"/>
+            <String fx:value="Hotel 3"/>
+        </ChoiceBox>
+        <TableView styleClass="table-view"/>
+        <GridPane styleClass="button-grid" BorderPane.alignment="BOTTOM_CENTER">
+            <Button styleClass="button-grid-button" text="Edytuj" GridPane.columnIndex="0"/>
+            <Button styleClass="button-grid-button" text="Usuń" GridPane.columnIndex="1"/>
+            <Button styleClass="button-grid-button" text="Dodaj nowego" GridPane.columnIndex="2"/>
+        </GridPane>
+    </VBox>
 
     <stylesheets>
         <URL value="@../../css/Main.css"/>

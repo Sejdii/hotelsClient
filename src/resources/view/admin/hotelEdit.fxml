@@ -7,15 +7,18 @@
 <?import javafx.scene.layout.*?>
 
 <?import java.net.URL?>
-<HBox xmlns="http://javafx.com/javafx"
+<VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.sadzbr.controller.HotelEditController"
-      styleClass="container, display-center"
 >
-    <Button styleClass="btn-large" text="PAKIET"/>
-    <Button styleClass="btn-large" text="POKÓJ"/>
+    <fx:include source="commons/menuBar.fxml"/>
+
+    <HBox styleClass="main-container, display-center">
+        <Button styleClass="btn-large" text="PAKIET" onAction="#handlePackageButton"/>
+        <Button styleClass="btn-large" text="POKÓJ" onAction="#handleRoomEdit"/>
+    </HBox>
 
     <stylesheets>
         <URL value="@../../css/Main.css"/>
     </stylesheets>
-</HBox>
+</VBox>

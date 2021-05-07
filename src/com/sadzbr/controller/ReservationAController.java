@@ -70,6 +70,9 @@ public class ReservationAController implements Initializable {
             // sending data to another scenes
             DataFlowController dataFlowController = DataFlowController.getInstance();
             dataFlowController.addValue("numberOfPersons", numberOfPersons.getText());
+            dataFlowController.addValue("package", packageChoose.getValue().toString());
+            dataFlowController.addValue("dateArrival", dateArrival.getValue().toString());
+            dataFlowController.addValue("dateDeparture", dateDeparture.getValue().toString());
 
             SceneController sceneController = SceneController.getInstance();
             sceneController.activate("worker/reservationB");

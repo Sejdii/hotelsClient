@@ -51,4 +51,11 @@ public class DataFlowController {
     public void deleteValue(String key) {
         values.remove(key);
     }
+
+    /**
+     * Usuwa wszystkie wartości z HashMapy
+     */
+    public void clear() {
+        values.clear();
+    }
 }

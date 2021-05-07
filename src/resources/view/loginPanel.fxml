@@ -11,7 +11,7 @@
 <VBox xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="com.sadzbr.controller.LoginPanelController"
-      styleClass="container, display-center"
+      styleClass="main-container, display-center"
             >
     <Text styleClass="h1, text-center" text="ZALOGUJ SIĘ"/>
     <TextField fx:id="loginField" promptText="Login"/>

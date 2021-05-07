@@ -21,10 +21,10 @@
     </top>
 
     <center>
-        <VBox styleClass="container, display-center">
+        <VBox styleClass="main-container, display-center">
             <Text text="Do zapłaty: X"  />
 
-            <TextField promptText="Podsumowanie zamówienia" minHeight="250" fx:id="summary" alignment="TOP_LEFT" />
+            <TextArea promptText="Podsumowanie zamówienia" minHeight="250" fx:id="summary" />
 
             <ChoiceBox value="Gotówka" fx:id="paymentMethod">
                 <String fx:value="Gotówka"/>
@@ -32,7 +32,7 @@
                 <String fx:value="BLIK"/>
             </ChoiceBox>
 
-            <GridPane styleClass="container" hgap="25">
+            <GridPane styleClass="main-container" hgap="25">
                 <Button text="Zatwierdź" styleClass="button-grid-button" GridPane.columnIndex="0" />
                 <Button text="Popraw" styleClass="button-grid-button" GridPane.columnIndex="1" onAction="#handleChangeButton" />
             </GridPane>

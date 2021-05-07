@@ -7,15 +7,19 @@
 <?import javafx.scene.layout.*?>
 
 <?import java.net.URL?>
-<HBox xmlns="http://javafx.com/javafx"
+<VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.sadzbr.controller.AdminChooseActionController"
-      styleClass="container, display-center"
 >
-    <Button styleClass="btn-large" text="PRACOWNICY"/>
-    <Button styleClass="btn-large" text="HOTELE"/>
+    <fx:include source="commons/menuBar.fxml"/>
+
+
+    <HBox styleClass="main-container, display-center">
+        <Button styleClass="btn-large" text="PRACOWNICY" onAction="#handleWorkersButton"/>
+        <Button styleClass="btn-large" text="HOTELE" onAction="#handleHotelsButton"/>
+    </HBox>
 
     <stylesheets>
         <URL value="@../../css/Main.css"/>
     </stylesheets>
-</HBox>
+</VBox>

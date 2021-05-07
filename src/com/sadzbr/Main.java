@@ -23,15 +23,15 @@ public class Main extends Application {
 
         SceneController sceneController = SceneController.getInstance();
         sceneController.setMain(scene);
-        sceneController.addScene("loginPanel", FXMLLoader.load(getClass().getResource(Resource.view("loginPanel"))));
-        sceneController.addScene("admin/adminChooseAction", FXMLLoader.load(getClass().getResource(Resource.view("admin/adminChooseAction"))));
-        sceneController.addScene("admin/workerEdit", FXMLLoader.load(getClass().getResource(Resource.view("admin/workerEdit"))));
-        sceneController.addScene("admin/hotelEdit", FXMLLoader.load(getClass().getResource(Resource.view("admin/hotelEdit"))));
-        sceneController.addScene("admin/packageEdit", FXMLLoader.load(getClass().getResource(Resource.view("admin/packageEdit"))));
-        sceneController.addScene("admin/roomEdit", FXMLLoader.load(getClass().getResource(Resource.view("admin/roomEdit"))));
-        sceneController.addScene("worker/reservationA", FXMLLoader.load(getClass().getResource(Resource.view("worker/reservationA"))));
-        sceneController.addScene("worker/reservationB", FXMLLoader.load(getClass().getResource(Resource.view("worker/reservationB"))));
-        sceneController.addScene("worker/reservationC", FXMLLoader.load(getClass().getResource(Resource.view("worker/reservationC"))));
+        sceneController.addScene("loginPanel", new FXMLLoader(getClass().getResource(Resource.view("loginPanel"))));
+        sceneController.addScene("admin/adminChooseAction", new FXMLLoader(getClass().getResource(Resource.view("admin/adminChooseAction"))));
+        sceneController.addScene("admin/workerEdit", new FXMLLoader(getClass().getResource(Resource.view("admin/workerEdit"))));
+        sceneController.addScene("admin/hotelEdit", new FXMLLoader(getClass().getResource(Resource.view("admin/hotelEdit"))));
+        sceneController.addScene("admin/packageEdit", new FXMLLoader(getClass().getResource(Resource.view("admin/packageEdit"))));
+        sceneController.addScene("admin/roomEdit", new FXMLLoader(getClass().getResource(Resource.view("admin/roomEdit"))));
+        sceneController.addScene("worker/reservationA", new FXMLLoader(getClass().getResource(Resource.view("worker/reservationA"))));
+        sceneController.addScene("worker/reservationB", new FXMLLoader(getClass().getResource(Resource.view("worker/reservationB"))));
+        sceneController.addScene("worker/reservationC", new FXMLLoader(getClass().getResource(Resource.view("worker/reservationC"))));
 
         sceneController.activate("loginPanel");
 

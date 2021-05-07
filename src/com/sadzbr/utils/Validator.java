@@ -119,6 +119,11 @@ public class Validator {
         return valid;
     }
 
+    /**
+     * Sprawdza czy podany tekst nie jest pusty
+     * @param text Tekst
+     * @return Zwraca true jeżeli tekst nie jest pusty
+     */
     static public boolean isNotEmpty(String text) {
         boolean valid = true;
         ErrorController errorController = ErrorController.getInstance();

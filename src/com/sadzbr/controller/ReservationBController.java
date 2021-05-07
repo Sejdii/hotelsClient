@@ -5,7 +5,10 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
@@ -13,6 +16,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ReservationBController implements Initializable {
+    @FXML private CheckBox newsletter;
+    @FXML private ChoiceBox roomChoose;
     @FXML private Text errorHandler;
     @FXML private TextField flatNr;
     @FXML private TextField homeNr;
@@ -72,8 +77,22 @@ public class ReservationBController implements Initializable {
         if(errorController.isEmpty()) {
             // everything is okey we can go to next scene
             // sending data to another scenes
+            DataFlowController dataFlowController = DataFlowController.getInstance();
+            dataFlowController.addValue("email", email.getText());
+            dataFlowController.addValue("room", roomChoose.getValue().toString());
+            dataFlowController.addValue("newsletter", Boolean.toString(newsletter.isSelected()));
+            dataFlowController.addValue("name", name.getText());
+            dataFlowController.addValue("surname", surname.getText());
+            dataFlowController.addValue("city", city.getText());
+            dataFlowController.addValue("postCode", postCode.getText());
+            dataFlowController.addValue("street", street.getText());
+            dataFlowController.addValue("homeNr", homeNr.getText());
+            dataFlowController.addValue("flatNr", flatNr.getText());
 
             SceneController sceneController = SceneController.getInstance();
+            FXMLLoader fxmlLoader = sceneController.getLoader("worker/reservationC");
+            ReservationCController reservationCController = fxmlLoader.getController();
+            reservationCController.makeSummary(); // send signal to ReservationC to make a summary
             sceneController.activate("worker/reservationC");
             errorHandler.setText("");
         } else {
