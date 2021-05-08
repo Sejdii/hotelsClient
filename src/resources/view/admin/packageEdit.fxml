@@ -23,7 +23,7 @@
         <GridPane styleClass="button-grid" BorderPane.alignment="BOTTOM_CENTER">
             <Button styleClass="button-grid-button" text="Edytuj" GridPane.columnIndex="0"/>
             <Button styleClass="button-grid-button" text="Usuń" GridPane.columnIndex="1"/>
-            <Button styleClass="button-grid-button" text="Dodaj nowego" GridPane.columnIndex="2"/>
+            <Button styleClass="button-grid-button" text="Dodaj nowy" onAction="#handleAddNewButton" GridPane.columnIndex="2"/>
         </GridPane>
     </VBox>
 

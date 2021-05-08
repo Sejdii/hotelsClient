@@ -1,6 +1,7 @@
 package com.sadzbr;
 
 import com.sadzbr.controller.SceneController;
+import com.sadzbr.controller.ServerConnection;
 import com.sadzbr.utils.Resource;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -26,8 +27,10 @@ public class Main extends Application {
         sceneController.addScene("loginPanel", new FXMLLoader(getClass().getResource(Resource.view("loginPanel"))));
         sceneController.addScene("admin/adminChooseAction", new FXMLLoader(getClass().getResource(Resource.view("admin/adminChooseAction"))));
         sceneController.addScene("admin/workerEdit", new FXMLLoader(getClass().getResource(Resource.view("admin/workerEdit"))));
+        sceneController.addScene("admin/workerEditForm", new FXMLLoader(getClass().getResource(Resource.view("admin/workerEditForm"))));
         sceneController.addScene("admin/hotelEdit", new FXMLLoader(getClass().getResource(Resource.view("admin/hotelEdit"))));
         sceneController.addScene("admin/packageEdit", new FXMLLoader(getClass().getResource(Resource.view("admin/packageEdit"))));
+        sceneController.addScene("admin/packageEditForm", new FXMLLoader(getClass().getResource(Resource.view("admin/packageEditForm"))));
         sceneController.addScene("admin/roomEdit", new FXMLLoader(getClass().getResource(Resource.view("admin/roomEdit"))));
         sceneController.addScene("worker/reservationA", new FXMLLoader(getClass().getResource(Resource.view("worker/reservationA"))));
         sceneController.addScene("worker/reservationB", new FXMLLoader(getClass().getResource(Resource.view("worker/reservationB"))));

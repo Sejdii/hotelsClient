@@ -16,8 +16,10 @@
         <String fx:value="admin/adminChooseAction" />
         <String fx:value="admin/hotelEdit" />
         <String fx:value="admin/packageEdit" />
+        <String fx:value="admin/packageEditForm" />
         <String fx:value="admin/roomEdit" />
         <String fx:value="admin/workerEdit" />
+        <String fx:value="admin/workerEditForm" />
         <String fx:value="worker/reservationA" />
         <String fx:value="worker/reservationB" />
         <String fx:value="worker/reservationC" />

@@ -1,6 +1,8 @@
 package com.sadzbr.model;
 
-public abstract class Table {
+import java.io.Serializable;
+
+public abstract class Table implements Serializable {
     protected String tableName;
     protected int id;
 
