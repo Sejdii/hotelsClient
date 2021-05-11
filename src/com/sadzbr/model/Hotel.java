@@ -1,5 +1,7 @@
 package com.sadzbr.model;
 
+import java.util.List;
+
 public class Hotel extends Table {
     private String address;
     private String name;
@@ -42,5 +44,10 @@ public class Hotel extends Table {
     @Override
     public boolean select() {
         return false;
+    }
+
+    @Override
+    public List<Table> selectAll() {
+        return null;
     }
 }

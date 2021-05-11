@@ -1,5 +1,7 @@
 package com.sadzbr.model;
 
+import java.util.List;
+
 public class Newsletter extends Table {
     private String email;
     private int id_client;
@@ -42,5 +44,10 @@ public class Newsletter extends Table {
     @Override
     public boolean select() {
         return false;
+    }
+
+    @Override
+    public List<Table> selectAll() {
+        return null;
     }
 }

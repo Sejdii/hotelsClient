@@ -15,7 +15,7 @@
             >
     <Text styleClass="h1, text-center" text="ZALOGUJ SIĘ"/>
     <TextField fx:id="loginField" promptText="Login"/>
-    <PasswordField promptText="Hasło"/>
+    <PasswordField promptText="Hasło" fx:id="passwordField"/>
     <Button styleClass="btn" text="Zaloguj się" onAction="#handleSubmitButtonAction"/>
     <Text styleClass="error-bar" fx:id="errorContainer"/>
 

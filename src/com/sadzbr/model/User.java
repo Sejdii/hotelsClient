@@ -1,5 +1,9 @@
 package com.sadzbr.model;
 
+import com.sadzbr.controller.ServerConnection;
+
+import java.util.List;
+
 public class User extends Table {
     private int id_hotel;
     private String login;
@@ -58,8 +62,41 @@ public class User extends Table {
         return false;
     }
 
+    public void set(User user) {
+        id = user.getId();
+        id_hotel = user.getId_hotel();
+        login = user.getLogin();
+        password = user.getPassword();
+        user_type = user.getUser_type();
+    }
+
     @Override
     public boolean select() {
-        return false;
+        ServerConnection serverConnection = new ServerConnection();
+        Message message = new Message(this, "select");
+        List<Table> response = serverConnection.sendMessage(message);
+        if(response == null || response.isEmpty()) {
+            return false;
+        }
+        User user = (User) response.get(0);
+        set(user);
+        return true;
+    }
+
+    @Override
+    public List<Table> selectAll() {
+        return null;
+    }
+
+    public boolean login() {
+        ServerConnection serverConnection = new ServerConnection();
+        Message message = new Message(this, "login");
+        List<Table> response = serverConnection.sendMessage(message);
+        if(response == null || response.isEmpty()) {
+            return false;
+        }
+        User user = (User) response.get(0);
+        set(user);
+        return true;
     }
 }

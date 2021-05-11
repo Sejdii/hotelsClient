@@ -1,7 +1,6 @@
 package com.sadzbr;
 
 import com.sadzbr.controller.SceneController;
-import com.sadzbr.controller.ServerConnection;
 import com.sadzbr.utils.Resource;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -49,6 +48,7 @@ public class Main extends Application {
         toolStage.setMaxWidth(300);
         toolStage.setScene(toolScene);
         toolStage.show();
+
     }
 
     public static void main(String[] args) {

@@ -1,5 +1,7 @@
 package com.sadzbr.model;
 
+import java.util.List;
+
 public class Payments extends Table {
     private String form;
     private double amount;
@@ -43,5 +45,10 @@ public class Payments extends Table {
     @Override
     public boolean select() {
         return false;
+    }
+
+    @Override
+    public List<Table> selectAll() {
+        return null;
     }
 }

@@ -1,27 +1,33 @@
 package com.sadzbr.controller;
 
 import com.sadzbr.model.Message;
-import com.sadzbr.model.User;
+import com.sadzbr.model.Table;
+import com.sadzbr.utils.Messages;
 import com.sadzbr.utils.Settings;
 
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ServerConnection {
-    public boolean sendMessage(Message m) {
+    public List<Table> sendMessage(Message m) {
+        List<Table> response = null;
         try (Socket socket = new Socket(Settings.SERVER_HOST, Settings.SERVER_PORT)) {
-            OutputStream outputStream = socket.getOutputStream();
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+
+            // send message to server
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
             objectOutputStream.writeObject(m);
-            socket.close();
-            return true;
-        } catch (IOException e) {
+
+            // get response from server
+            ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
+            response = (List<Table>) objectInputStream.readObject();
+
+            objectInputStream.close();
+            objectOutputStream.close();
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
-            return false;
+            Messages.logMessage("Send message to server error: " + e.getMessage(), true);
         }
+        return response;
     }
 }

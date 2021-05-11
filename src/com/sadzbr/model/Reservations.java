@@ -1,5 +1,7 @@
 package com.sadzbr.model;
 
+import java.util.List;
+
 public class Reservations extends Table {
     private int id_room;
     private int id_package;
@@ -60,5 +62,10 @@ public class Reservations extends Table {
     @Override
     public boolean select() {
         return false;
+    }
+
+    @Override
+    public List<Table> selectAll() {
+        return null;
     }
 }
