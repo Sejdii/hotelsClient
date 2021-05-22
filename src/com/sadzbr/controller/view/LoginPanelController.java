@@ -1,8 +1,10 @@
-package com.sadzbr.controller;
+package com.sadzbr.controller.view;
 
+import com.sadzbr.controller.SceneController;
 import com.sadzbr.model.Message;
 import com.sadzbr.model.User;
 import com.sadzbr.service.LoggedUser;
+import com.sadzbr.utils.model.UserUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -18,13 +20,13 @@ public class LoginPanelController {
         User user = new User();
         user.setLogin(loginField.getText());
         user.setPassword(passwordField.getText());
-        if(user.login()) {
+        if((user = UserUtil.loginUser(user)) != null) {
             SceneController sceneController = SceneController.getInstance();
             LoggedUser loggedUser = LoggedUser.getINSTANCE();
             loggedUser.setUser(user);
             if(user.getUser_type().equals("admin")) {
                 sceneController.activate("admin/adminChooseAction");
-            } else if(user.getUser_type().equals("worker")) {
+            } else if(user.getUser_type().equals("pracownik")) {
                 sceneController.activate("worker/reservationA");
             }
         } else {

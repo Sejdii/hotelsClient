@@ -1,16 +1,21 @@
-package com.sadzbr.controller;
+package com.sadzbr.controller.view;
 
+import com.sadzbr.controller.DataFlowController;
+import com.sadzbr.controller.SceneController;
 import com.sadzbr.model.Table;
 import com.sadzbr.model.User;
+import com.sadzbr.utils.model.UserUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.DataInputStream;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -24,8 +29,7 @@ public class WorkerEditController implements Initializable {
     }
 
     public void handleRefreshButton(ActionEvent actionEvent) {
-        User user = new User();
-        List<Table> userList = user.selectAll();
+        List<Table> userList = UserUtil.getUserList();
         ObservableList<User> observableList = FXCollections.observableArrayList();
         for(Table element : userList) {
             observableList.add((User) element);
@@ -52,5 +56,24 @@ public class WorkerEditController implements Initializable {
         userTypeColumn.setMinWidth(100);
 
         workerTable.getColumns().addAll(idColumn, idHotelColumn, loginColumn, userTypeColumn);
+    }
+
+    public void handleDeleteButton(ActionEvent actionEvent) {
+        User user = (User) workerTable.getSelectionModel().getSelectedItem();
+        if(user != null && user.getId() != 0) { //cannot delete root account
+            UserUtil.deleteUserList(user);
+            handleRefreshButton(actionEvent);
+        }
+    }
+
+    public void handleEditButton(ActionEvent actionEvent) {
+        User user = (User) workerTable.getSelectionModel().getSelectedItem();
+        if(user != null && user.getId() != 0) {
+            SceneController sceneController = SceneController.getInstance();
+            FXMLLoader fxmlLoader = sceneController.getLoader("admin/workerEditForm");
+            WorkerEditFormController workerEditFormController = fxmlLoader.getController();
+            workerEditFormController.setWorkerID(user.getId());
+            sceneController.activate("admin/workerEditForm");
+        }
     }
 }

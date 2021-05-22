@@ -83,4 +83,15 @@ public class ValidationTest {
         x = Validator.isNotEmpty("a");
         Assert.assertTrue(x);
     }
+
+    @Test
+    public void loginTest() {
+        boolean x;
+        x = Validator.login("");
+        Assert.assertFalse(x);
+        x = Validator.login("abba12");
+        Assert.assertTrue(x);
+        x = Validator.login("12");
+        Assert.assertFalse(x);
+    }
 }

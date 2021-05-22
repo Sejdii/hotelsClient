@@ -18,10 +18,4 @@ public abstract class Table implements Serializable {
     public String getTableName() {
         return tableName;
     }
-
-    abstract public int insert();
-    abstract public boolean update();
-    abstract public boolean delete();
-    abstract public boolean select();
-    abstract public List<Table> selectAll();
 }

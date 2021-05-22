@@ -1,5 +1,6 @@
-package com.sadzbr.controller;
+package com.sadzbr.controller.view;
 
+import com.sadzbr.controller.SceneController;
 import javafx.event.ActionEvent;
 
 public class PackageEdit {

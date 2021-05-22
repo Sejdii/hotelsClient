@@ -9,7 +9,7 @@
 <?import java.net.URL?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.sadzbr.controller.AdminChooseActionController"
+      fx:controller="com.sadzbr.controller.view.AdminChooseActionController"
 >
     <fx:include source="commons/menuBar.fxml"/>
 

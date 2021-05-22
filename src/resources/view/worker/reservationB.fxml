@@ -10,7 +10,7 @@
 <?import java.net.URL?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.sadzbr.controller.ReservationBController"
+            fx:controller="com.sadzbr.controller.view.ReservationBController"
 >
 
     <top>

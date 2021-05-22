@@ -1,5 +1,7 @@
-package com.sadzbr.controller;
+package com.sadzbr.controller.view;
 
+import com.sadzbr.controller.DataFlowController;
+import com.sadzbr.controller.SceneController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

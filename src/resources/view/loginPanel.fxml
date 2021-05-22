@@ -10,7 +10,7 @@
 <?import java.net.URL?>
 <VBox xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
-          fx:controller="com.sadzbr.controller.LoginPanelController"
+          fx:controller="com.sadzbr.controller.view.LoginPanelController"
       styleClass="main-container, display-center"
             >
     <Text styleClass="h1, text-center" text="ZALOGUJ SIĘ"/>

@@ -1,5 +1,8 @@
-package com.sadzbr.controller;
+package com.sadzbr.controller.view;
 
+import com.sadzbr.controller.DataFlowController;
+import com.sadzbr.controller.ErrorController;
+import com.sadzbr.controller.SceneController;
 import com.sadzbr.utils.Validator;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

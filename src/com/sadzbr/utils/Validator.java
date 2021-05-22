@@ -7,7 +7,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Klasa walidująca dane.
+ * Klasa dokonująca walidacji danych. Każda metoda klasy sprawdza poprawność danych i w przypadku braku poprawności zamieszcza
+ * informacje w instancji klasy ErrorController.
  */
 public class Validator {
     /**
@@ -130,6 +131,22 @@ public class Validator {
         if(text.isEmpty()) {
             valid = false;
             errorController.addMessage("Podane pole nie może być puste");
+        }
+        return valid;
+    }
+
+    /**
+     * Sprawdza czy podany login jest poprawny
+     * @param text Login
+     * @return Zwraca true jeżeli dane są poprawne
+     */
+    static public boolean login(String text) {
+        boolean valid = true;
+        ErrorController errorController = ErrorController.getInstance();
+        valid = isNotEmpty(text);
+        if(text.length() <= 4 || text.length() > 20) {
+            valid = false;
+            errorController.addMessage("Podane pole nie może być krótsze niż 4 znaki oraz dłuższe niż 20");
         }
         return valid;
     }

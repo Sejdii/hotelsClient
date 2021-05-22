@@ -38,7 +38,7 @@ public class Main extends Application {
         sceneController.activate("loginPanel");
 
         /* SCENE CONTROL TOOL WINDOW */
-
+        /*
         Parent toolRoot = FXMLLoader.load(getClass().getResource(Resource.view("sceneControlTool")));
         Scene toolScene = new Scene(toolRoot, 300, 200);
 
@@ -48,6 +48,8 @@ public class Main extends Application {
         toolStage.setMaxWidth(300);
         toolStage.setScene(toolScene);
         toolStage.show();
+
+         */
 
     }
 

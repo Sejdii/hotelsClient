@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Text?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.sadzbr.controller.PackageEditFormController">
+            fx:controller="com.sadzbr.controller.view.PackageEditFormController">
     <top>
         <fx:include source="commons/menuBar.fxml"/>
     </top>

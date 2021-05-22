@@ -7,9 +7,10 @@
 <?import javafx.scene.layout.*?>
 
 <?import java.net.URL?>
+<?import javafx.scene.text.Text?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.sadzbr.controller.WorkerEditFormController">
+            fx:controller="com.sadzbr.controller.view.WorkerEditFormController">
 
     <top>
         <fx:include source="commons/menuBar.fxml"/>
@@ -17,21 +18,20 @@
 
     <center>
         <GridPane styleClass="main-container" hgap="10" vgap="10">
-            <ChoiceBox styleClass="choice-box" value="Pracownik" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                <String fx:value="Administrator"/>
-                <String fx:value="Pracownik"/>
+            <ChoiceBox styleClass="choice-box" value="pracownik" GridPane.columnIndex="0" GridPane.rowIndex="0" fx:id="user_type">
+                <String fx:value="admin"/>
+                <String fx:value="pracownik"/>
             </ChoiceBox>
-            <ChoiceBox styleClass="choice-box" value="Hotel 1" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                <String fx:value="Hotel 1"/>
-                <String fx:value="Hotel 2"/>
-                <String fx:value="Hotel 3"/>
-            </ChoiceBox>
+            <ComboBox styleClass="choice-box" GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="hotel_id">
+            </ComboBox>
 
-            <TextField promptText="Login" styleClass="form-control" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-            <PasswordField promptText="Hasło" styleClass="form-control" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            <TextField promptText="Login" styleClass="form-control" GridPane.columnIndex="0" GridPane.rowIndex="1" fx:id="login"/>
+            <PasswordField promptText="Hasło" styleClass="form-control" GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="password"/>
 
-            <Button styleClass="button-grid-button" GridPane.rowIndex="2" GridPane.columnIndex="0">Zapisz zmiany</Button>
-            <Button styleClass="button-grid-button" GridPane.rowIndex="2" GridPane.columnIndex="1">Anuluj</Button>
+            <Button styleClass="button-grid-button" GridPane.rowIndex="2" GridPane.columnIndex="0" onAction="#handleSaveButton">Zapisz zmiany</Button>
+            <Button styleClass="button-grid-button" GridPane.rowIndex="2" GridPane.columnIndex="1" onAction="#handleCancelButton">Anuluj</Button>
+
+            <Text styleClass="error-bar" GridPane.rowIndex="3" GridPane.columnSpan="2" fx:id="errorContainer"/>
         </GridPane>
     </center>
 
