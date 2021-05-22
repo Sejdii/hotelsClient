@@ -85,7 +85,13 @@ public class User extends Table {
 
     @Override
     public List<Table> selectAll() {
-        return null;
+        ServerConnection serverConnection = new ServerConnection();
+        Message message = new Message(this, "selectAll");
+        List<Table> response = serverConnection.sendMessage(message);
+        if(response == null || response.isEmpty()) {
+            return null;
+        }
+        return response;
     }
 
     public boolean login() {
