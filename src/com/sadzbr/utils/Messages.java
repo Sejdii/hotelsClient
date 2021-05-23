@@ -17,5 +17,6 @@ public class Messages {
             alert.setContentText(message);
             alert.showAndWait();
         }
+        logger.info(message);
     }
 }

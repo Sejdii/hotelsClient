@@ -87,22 +87,6 @@ public class WorkerEditFormController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         List<Table> tableList = HotelUtil.getHotelList();
-        ObservableList<Hotel> hotels = FXCollections.observableArrayList();
-        for(Table t : tableList) {
-            hotels.add((Hotel) t);
-        }
-        hotel_id.setItems(hotels);
-        hotel_id.setValue((Hotel) tableList.get(0));
-        hotel_id.setConverter(new StringConverter<Hotel>() {
-            @Override
-            public String toString(Hotel object) {
-                return object.getName();
-            }
-
-            @Override
-            public Hotel fromString(String string) {
-                return null;
-            }
-        });
+        hotel_id = HotelUtil.setCombobox(hotel_id, tableList);
     }
 }

@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import java.net.URL?>
+<?import javafx.scene.text.Text?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.sadzbr.controller.view.RoomEditController"
@@ -16,11 +17,11 @@
     <fx:include source="commons/menuBar.fxml"/>
 
     <VBox styleClass="main-container">
-        <ComboBox styleClass="choice-box" fx:id="id_hotel" >
+        <ComboBox styleClass="choice-box" fx:id="id_hotel" onAction="#handleHotelIdChange">
         </ComboBox>
 
         <HBox>
-            <ComboBox styleClass="choice-box" fx:id="room_id" >
+            <ComboBox styleClass="choice-box" fx:id="room_id" onAction="#handleRoomsIdChange">
             </ComboBox>
             <TextField promptText="Cena" styleClass="form-control" fx:id="price" />
         </HBox>
@@ -29,6 +30,8 @@
             <Button text="Zatwierdź" onAction="#handleConfirmButton"/>
             <Button text="Anuluj" onAction="#handleCancelButton" />
         </HBox>
+
+        <Text styleClass="error-bar" fx:id="errorContainer" />
     </VBox>
 
     <stylesheets>
