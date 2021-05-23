@@ -17,18 +17,15 @@
 
     <center>
         <GridPane styleClass="main-container" hgap="10" vgap="10">
-            <ChoiceBox styleClass="choice-box" value="Hotel 1" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                <String fx:value="Hotel 1"/>
-                <String fx:value="Hotel 2"/>
-                <String fx:value="Hotel 3"/>
-            </ChoiceBox>
-            <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="form-control" promptText="Cena pakietu" />
+            <ComboBox styleClass="choice-box" GridPane.columnIndex="0" GridPane.rowIndex="0" fx:id="id_hotel">
+            </ComboBox>
+            <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="form-control" promptText="Cena pakietu" fx:id="price" />
 
-            <TextField promptText="Nazwa pakietu" styleClass="form-control" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <TextField promptText="Opis pakietu" styleClass="form-control" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField promptText="Nazwa pakietu" styleClass="form-control" GridPane.columnIndex="0" GridPane.rowIndex="1" fx:id="name" />
+            <TextField promptText="Opis pakietu" styleClass="form-control" GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="description" />
 
-            <Button styleClass="button-grid-button" GridPane.rowIndex="2" GridPane.columnIndex="0">Zapisz zmiany</Button>
-            <Button styleClass="button-grid-button" GridPane.rowIndex="2" GridPane.columnIndex="1">Anuluj</Button>
+            <Button styleClass="button-grid-button" GridPane.rowIndex="2" GridPane.columnIndex="0" onAction="#handleSaveButton">Zapisz zmiany</Button>
+            <Button styleClass="button-grid-button" GridPane.rowIndex="2" GridPane.columnIndex="1" onAction="#handleCancelButton">Anuluj</Button>
         </GridPane>
     </center>
 
