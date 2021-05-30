@@ -1,22 +1,54 @@
 package com.sadzbr.model;
 
+/**
+ * Model dla tabeli Client
+ */
 public class Client extends Table {
+    /**
+     * Imię
+     */
     private String name;
+    /**
+     * Nazwisko
+     */
     private String surname;
+    /**
+     * Ulica
+     */
     private String street;
+    /**
+     * Numer domu
+     */
     private int home_nr;
+    /**
+     * Numer mieszkania
+     */
     private int flat_nr;
+    /**
+     * Kod pocztowy
+     */
     private String zip_code;
+    /**
+     * Miasto
+     */
     private String city;
 
     {
         tableName = "Client";
     }
 
+    /**
+     * Pobiera imię
+     * @return Imię
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Ustawia imię
+     * @param name imię
+     */
     public void setName(String name) {
         this.name = name;
     }

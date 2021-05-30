@@ -35,7 +35,7 @@
                 <String fx:value="BLIK"/>
             </ChoiceBox>
 
-            <GridPane styleClass="main-container" hgap="25">
+            <GridPane hgap="25">
                 <Button text="Zatwierdź" styleClass="button-grid-button" GridPane.columnIndex="0" onAction="#handleConfirmButton" />
                 <Button text="Popraw" styleClass="button-grid-button" GridPane.columnIndex="1" onAction="#handleChangeButton" />
             </GridPane>

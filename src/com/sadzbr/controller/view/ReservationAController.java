@@ -4,22 +4,22 @@ import com.sadzbr.controller.DataFlowController;
 import com.sadzbr.controller.ErrorController;
 import com.sadzbr.controller.SceneController;
 import com.sadzbr.model.Hotel;
-import com.sadzbr.model.Reservations;
+import com.sadzbr.model.Package;
 import com.sadzbr.service.LoggedUser;
 import com.sadzbr.utils.Validator;
 import com.sadzbr.utils.model.HotelUtil;
-import com.sadzbr.model.Package;
-
 import com.sadzbr.utils.model.PackageUtil;
 import com.sadzbr.utils.model.ReservationsUtil;
-import com.sadzbr.utils.model.TableUtil;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DateCell;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -89,6 +89,7 @@ public class ReservationAController implements Initializable {
             DataFlowController dataFlowController = DataFlowController.getInstance();
             dataFlowController.addValue("numberOfPersons", numberOfPersons.getText());
             dataFlowController.addValue("package", String.valueOf(packageChoose.getValue().getId()));
+            dataFlowController.addValue("packageName", String.valueOf(packageChoose.getValue().getName()));
             dataFlowController.addValue("dateArrival", dateArrival.getValue().toString());
             dataFlowController.addValue("dateDeparture", dateDeparture.getValue().toString());
 
@@ -116,5 +117,17 @@ public class ReservationAController implements Initializable {
 
         /* SETTING FORMS INPUTS */
         packageChoose = PackageUtil.setCombobox(packageChoose, PackageUtil.excludeByHotelId(PackageUtil.getPackageList(), loggedUser.getUser().getId_hotel()));
+    }
+
+    /**
+     * Czyści pola input sceny
+     */
+    public void clearScene() {
+        numberOfPersons.setText("");
+
+        // clear another scenes
+        SceneController sceneController = SceneController.getInstance();
+        ReservationBController reservationBController = sceneController.getLoader("worker/reservationB").getController();
+        reservationBController.clearScene();
     }
 }

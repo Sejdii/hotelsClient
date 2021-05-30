@@ -2,9 +2,11 @@ package com.sadzbr.controller.view;
 
 import com.sadzbr.model.Hotel;
 import com.sadzbr.model.Reservations;
+import com.sadzbr.model.Table;
 import com.sadzbr.model.User;
 import com.sadzbr.service.LoggedUser;
 import com.sadzbr.utils.model.HotelUtil;
+import com.sadzbr.utils.model.ReservationsUtil;
 import com.sadzbr.utils.model.TableUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ReservationShowController implements Initializable {
@@ -24,7 +27,9 @@ public class ReservationShowController implements Initializable {
 
     public void handleRefreshButton(ActionEvent actionEvent) {
         TableUtil<Reservations> reservationsTableUtil = new TableUtil<>(Reservations::new);
-        reservationTable.setItems(reservationsTableUtil.convertToObservableList(reservationsTableUtil.getList()));
+        List<Table> tableList = ReservationsUtil.excludeByHotelID(reservationsTableUtil.getList(), LoggedUser.getINSTANCE().getUser().getId_hotel());
+        tableList = ReservationsUtil.replaceIdRoomByNr(tableList);
+        reservationTable.setItems(reservationsTableUtil.convertToObservableList(tableList));
     }
 
     @Override

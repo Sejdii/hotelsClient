@@ -98,6 +98,9 @@ public class ReservationBController implements Initializable {
         if(!flatNr.getText().isEmpty()) {
             Validator.positiveNumber(Integer.parseInt(flatNr.getText()));
         }
+        if(roomChoose.getValue() == null) {
+            errorController.addMessage("Żaden pokój nie został wybrany");
+        }
 
         if(errorController.isEmpty()) {
             // everything is okey we can go to next scene
@@ -156,5 +159,20 @@ public class ReservationBController implements Initializable {
         assert hotel != null : "Hotel is null";
         hotelName.setText(hotel.getName());
         hotelAddress.setText(hotel.getAddress());
+    }
+
+    /**
+     * Czyści pola input sceny
+     */
+    public void clearScene() {
+        newsletter.setSelected(false);
+        flatNr.setText("");
+        homeNr.setText("");
+        street.setText("");
+        postCode.setText("");
+        city.setText("");
+        name.setText("");
+        surname.setText("");
+        email.setText("");
     }
 }

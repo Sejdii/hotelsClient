@@ -1,7 +1,6 @@
 package com.sadzbr.controller.view;
 
 import com.sadzbr.controller.SceneController;
-import com.sadzbr.model.Message;
 import com.sadzbr.model.User;
 import com.sadzbr.service.LoggedUser;
 import com.sadzbr.utils.model.UserUtil;
@@ -27,6 +26,7 @@ public class LoginPanelController {
             loggedUser.setUser(user);
             loginField.setText("");
             passwordField.setText("");
+            errorContainer.setText("");
             if(user.getUser_type().equals("admin")) {
                 sceneController.activate("admin/adminChooseAction");
             } else if(user.getUser_type().equals("pracownik")) {
@@ -35,7 +35,8 @@ public class LoginPanelController {
                 reservationAController.userHasLogged();
                 fxmlLoader = sceneController.getLoader("worker/reservationShow");
                 ReservationShowController reservationShowController = fxmlLoader.getController();
-                reservationShowController.userHasLogged(); 
+                reservationShowController.userHasLogged();
+                reservationAController.clearScene();
 
                 sceneController.activate("worker/reservationA");
             }
