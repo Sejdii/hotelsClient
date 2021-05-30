@@ -11,11 +11,27 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
+/**
+ * Kontroler panelu logowania
+ */
 public class LoginPanelController {
+    /**
+     * Pole hasło
+     */
     @FXML private PasswordField passwordField;
+    /**
+     * Pole login
+     */
     @FXML private TextField loginField;
+    /**
+     * Kontener wyświetlający błędy
+     */
     @FXML private Text errorContainer;
 
+    /**
+     * Handler dla przycisku zaloguj się
+     * @param actionEvent Event
+     */
     @FXML protected void handleSubmitButtonAction(ActionEvent actionEvent) {
         User user = new User();
         user.setLogin(loginField.getText());

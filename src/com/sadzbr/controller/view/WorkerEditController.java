@@ -1,6 +1,5 @@
 package com.sadzbr.controller.view;
 
-import com.sadzbr.controller.DataFlowController;
 import com.sadzbr.controller.SceneController;
 import com.sadzbr.model.Table;
 import com.sadzbr.model.User;
@@ -15,19 +14,32 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.io.DataInputStream;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Kontroler edycji pracownika
+ */
 public class WorkerEditController implements Initializable {
+    /**
+     * Tabela z pracownikami
+     */
     @FXML private TableView workerTable;
 
+    /**
+     * Handler przycisku dodaj nowego pracownika
+     * @param actionEvent Event
+     */
     public void handleAddNewButton(ActionEvent actionEvent) {
         SceneController sceneController = SceneController.getInstance();
         sceneController.activate("admin/workerEditForm");
     }
 
+    /**
+     * Handler przycisku odświeżenia
+     * @param actionEvent event
+     */
     public void handleRefreshButton(ActionEvent actionEvent) {
         List<Table> userList = UserUtil.getUserList();
         ObservableList<User> observableList = FXCollections.observableArrayList();
@@ -37,6 +49,11 @@ public class WorkerEditController implements Initializable {
         workerTable.setItems(observableList);
     }
 
+    /**
+     * Inicjator kontrolera. Ustawia tabelę.
+     * @param location Lokacja
+     * @param resources Zasoby
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         TableColumn idColumn = new TableColumn("ID");
@@ -58,6 +75,10 @@ public class WorkerEditController implements Initializable {
         workerTable.getColumns().addAll(idColumn, idHotelColumn, loginColumn, userTypeColumn);
     }
 
+    /**
+     * Handler przycisku usunięcia
+     * @param actionEvent event
+     */
     public void handleDeleteButton(ActionEvent actionEvent) {
         User user = (User) workerTable.getSelectionModel().getSelectedItem();
         if(user != null && user.getId() != 0) { //cannot delete root account
@@ -66,6 +87,10 @@ public class WorkerEditController implements Initializable {
         }
     }
 
+    /**
+     * Handler przycisku edycji
+     * @param actionEvent event
+     */
     public void handleEditButton(ActionEvent actionEvent) {
         User user = (User) workerTable.getSelectionModel().getSelectedItem();
         if(user != null && user.getId() != 0) {

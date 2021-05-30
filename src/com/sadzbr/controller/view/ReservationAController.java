@@ -26,15 +26,44 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+/**
+ * Kontroler sceny A rezerwacji
+ */
 public class ReservationAController implements Initializable {
+    /**
+     * Pole adresu hotelu
+     */
     @FXML private Text hotelAddress;
+    /**
+     * Pole nazwy hotelu
+     */
     @FXML private Text hotelName;
+    /**
+     * Kontener na błędy
+     */
     @FXML private Text errorHandler;
+    /**
+     * Pole daty odjazdu
+     */
     @FXML private DatePicker dateDeparture;
+    /**
+     * Pole daty przyjazdu
+     */
     @FXML private DatePicker dateArrival;
+    /**
+     * Pole liczby osób
+     */
     @FXML private TextField numberOfPersons;
+    /**
+     * Combobox wyboru pakietu
+     */
     @FXML private ComboBox<Package> packageChoose;
 
+    /**
+     * Inicjator kontrolera. Ustawia pola input.
+     * @param location Lokacja
+     * @param resources Zasoby
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // listener for number input
@@ -67,6 +96,10 @@ public class ReservationAController implements Initializable {
         });
     }
 
+    /**
+     * Handler przycisku sprawdzenia dostępności
+     * @param actionEvent event
+     */
     public void handleCheckAvailability(ActionEvent actionEvent) {
         //Validation
         ErrorController errorController = ErrorController.getInstance();
@@ -108,6 +141,9 @@ public class ReservationAController implements Initializable {
         }
     }
 
+    /**
+     * Sygnał że zalogował się użytkownik. Ustawia nazwę i adres hotelu.
+     */
     public void userHasLogged() {
         LoggedUser loggedUser = LoggedUser.getINSTANCE();
         Hotel hotel  = HotelUtil.getByID(HotelUtil.getHotelList(),loggedUser.getUser().getId_hotel());

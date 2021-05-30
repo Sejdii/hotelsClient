@@ -1,6 +1,7 @@
 package com.sadzbr;
 
 import com.sadzbr.controller.SceneController;
+import com.sadzbr.utils.Messages;
 import com.sadzbr.utils.Resource;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +21,8 @@ public class Main extends Application {
         stage.setMinWidth(900);
         stage.setScene(scene);
         stage.show();
+
+        Messages.setLogger();
 
         SceneController sceneController = SceneController.getInstance();
         sceneController.setMain(scene);

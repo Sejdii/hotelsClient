@@ -3,7 +3,6 @@ package com.sadzbr.controller.view;
 import com.sadzbr.model.Hotel;
 import com.sadzbr.model.Reservations;
 import com.sadzbr.model.Table;
-import com.sadzbr.model.User;
 import com.sadzbr.service.LoggedUser;
 import com.sadzbr.utils.model.HotelUtil;
 import com.sadzbr.utils.model.ReservationsUtil;
@@ -20,11 +19,27 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Kontroler pokazania rezerwacji
+ */
 public class ReservationShowController implements Initializable {
+    /**
+     * Tabela z rezerwacjami
+     */
     @FXML private TableView<Reservations> reservationTable;
+    /**
+     * Tekst z adresem hotelu
+     */
     @FXML private Text hotelAddress;
+    /**
+     * Tekst z nazwą hotelu
+     */
     @FXML private Text hotelName;
 
+    /**
+     * Handler przycisku odświeżenia
+     * @param actionEvent event
+     */
     public void handleRefreshButton(ActionEvent actionEvent) {
         TableUtil<Reservations> reservationsTableUtil = new TableUtil<>(Reservations::new);
         List<Table> tableList = ReservationsUtil.excludeByHotelID(reservationsTableUtil.getList(), LoggedUser.getINSTANCE().getUser().getId_hotel());
@@ -32,6 +47,11 @@ public class ReservationShowController implements Initializable {
         reservationTable.setItems(reservationsTableUtil.convertToObservableList(tableList));
     }
 
+    /**
+     * Inicjator kontrolera. Ustawia tabelę.
+     * @param location Lokacja
+     * @param resources Zasoby
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -50,6 +70,9 @@ public class ReservationShowController implements Initializable {
         reservationTable.getColumns().addAll(idRoomColumn, startDateColumn, endDateColumn);
     }
 
+    /**
+     * Sygnał że użytkownik się zalogował
+     */
     public void userHasLogged() {
         LoggedUser loggedUser = LoggedUser.getINSTANCE();
         Hotel hotel  = HotelUtil.getByID(HotelUtil.getHotelList(),loggedUser.getUser().getId_hotel());

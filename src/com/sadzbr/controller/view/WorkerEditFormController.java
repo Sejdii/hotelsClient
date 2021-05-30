@@ -8,8 +8,6 @@ import com.sadzbr.model.User;
 import com.sadzbr.utils.Validator;
 import com.sadzbr.utils.model.HotelUtil;
 import com.sadzbr.utils.model.UserUtil;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,21 +16,45 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import javafx.util.StringConverter;
 
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Kontroler edycji pracownika
+ */
 public class WorkerEditFormController implements Initializable {
+    /**
+     * Kontener na błędy
+     */
     @FXML private Text errorContainer;
+    /**
+     * Pole hasło
+     */
     @FXML private PasswordField password;
+    /**
+     * Pole login
+     */
     @FXML private TextField login;
+    /**
+     * Pole wyboru hotelu
+     */
     @FXML private ComboBox<Hotel> hotel_id;
+    /**
+     * Pole wyboru typu użytkownika
+     */
     @FXML private ChoiceBox user_type;
 
+    /**
+     * Id pracownika. Gdy ma wartość -1 wtedy dodajemy nowego pracownika a nie edytujemy istniejącego.
+     */
     private int worker_id = -1;
 
+    /**
+     * Handler przycisku anulowania
+     * @param actionEvent event
+     */
     public void handleCancelButton(ActionEvent actionEvent) {
         SceneController sceneController = SceneController.getInstance();
         sceneController.activate("admin/workerEdit");
@@ -42,6 +64,10 @@ public class WorkerEditFormController implements Initializable {
         login.setText("");
     }
 
+    /**
+     * Handler przycisku zapisu
+     * @param actionEvent event
+     */
     public void handleSaveButton(ActionEvent actionEvent) {
         User user = new User();
         user.setPassword(password.getText());
@@ -71,6 +97,10 @@ public class WorkerEditFormController implements Initializable {
         }
     }
 
+    /**
+     * Ustawia ID pracownika
+     * @param id id pracownika
+     */
     public void setWorkerID(int id) {
         List<Table> tableList = UserUtil.getUserList();
         User user = UserUtil.getByID(tableList, id);
@@ -84,6 +114,11 @@ public class WorkerEditFormController implements Initializable {
         }
     }
 
+    /**
+     * Inicjator kontrolera. Ustawia pole wyboru hotelu.
+     * @param location Lokacja
+     * @param resources Zasoby
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         List<Table> tableList = HotelUtil.getHotelList();

@@ -11,13 +11,26 @@ import javafx.util.StringConverter;
 
 import java.util.List;
 
+/**
+ * Metody dla tabeli hotel
+ */
 public class HotelUtil {
+    /**
+     * Pobiera listę hoteli
+     * @return List hoteli
+     */
     static public List<Table> getHotelList() {
         Message message = new Message("getHotelList", null);
         ServerConnection serverConnection =  new ServerConnection();
         return serverConnection.sendMessage(message);
     }
 
+    /**
+     * Zwraca hotel z listy o podanym id
+     * @param tableList Lista
+     * @param id ID
+     * @return Hotel
+     */
     static public Hotel getByID(List<Table> tableList, int id) {
         if(tableList == null || tableList.isEmpty()) return null;
 
@@ -30,6 +43,11 @@ public class HotelUtil {
         return null;
     }
 
+    /**
+     * Konwertuje listę do ObservableList
+     * @param tableList Lista
+     * @return ObservableList
+     */
     static public ObservableList<Hotel> convertToObservableList(List<Table> tableList) {
         ObservableList<Hotel> hotels = FXCollections.observableArrayList();
         for(Table t : tableList) {
@@ -38,6 +56,12 @@ public class HotelUtil {
         return hotels;
     }
 
+    /**
+     * Ustawia combobox
+     * @param comboBox combobox
+     * @param tableList lista
+     * @return combobox
+     */
     static public ComboBox setCombobox(ComboBox comboBox, List<Table> tableList) {
         ObservableList<Hotel> hotels = convertToObservableList(tableList);
         comboBox.setItems(hotels);

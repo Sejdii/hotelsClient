@@ -33,20 +33,64 @@ import java.util.ResourceBundle;
  * Kontroler dla sceny B rezerwacji
  */
 public class ReservationBController implements Initializable {
+    /**
+     * Tekst adresu hotelu
+     */
     @FXML private Text hotelAddress;
+    /**
+     * Tekst nazwy hotelu
+     */
     @FXML private Text hotelName;
+    /**
+     * Checkbox newslettera
+     */
     @FXML private CheckBox newsletter;
+    /**
+     * Pole wyboru pokoju
+     */
     @FXML private ComboBox<Rooms> roomChoose;
+    /**
+     * Kontener na błędy
+     */
     @FXML private Text errorHandler;
+    /**
+     * Pole na numer mieszkania
+     */
     @FXML private TextField flatNr;
+    /**
+     * Pole na numer domu
+     */
     @FXML private TextField homeNr;
+    /**
+     * Pole na ulicę
+     */
     @FXML private TextField street;
+    /**
+     * Pole na kod pocztowy
+     */
     @FXML private TextField postCode;
+    /**
+     * Pole na miasto
+     */
     @FXML private TextField city;
+    /**
+     * Pole na nazwisko
+     */
     @FXML private TextField surname;
+    /**
+     * Pole na imię
+     */
     @FXML private TextField name;
+    /**
+     * Pole na email
+     */
     @FXML private TextField email;
 
+    /**
+     * Inicjator kontrolera. Ustawia pola input
+     * @param location Lokacja
+     * @param resources Zasoby
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // listener for number input

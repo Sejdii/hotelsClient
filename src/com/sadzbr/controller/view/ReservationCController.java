@@ -2,19 +2,16 @@ package com.sadzbr.controller.view;
 
 import com.sadzbr.controller.DataFlowController;
 import com.sadzbr.controller.SceneController;
-import com.sadzbr.model.*;
 import com.sadzbr.model.Package;
+import com.sadzbr.model.*;
 import com.sadzbr.service.LoggedUser;
 import com.sadzbr.utils.model.HotelUtil;
 import com.sadzbr.utils.model.TableUtil;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -22,21 +19,47 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
+/**
+ * Kontroler dla sceny C rezerwacji
+ */
 public class ReservationCController implements Initializable {
-
+    /**
+     * Tekst dla sumy kwoty do zapłaty
+     */
     @FXML private Text payAmount;
+    /**
+     * Tekst adresu hotelu
+     */
     @FXML private Text hotelAddress;
+    /**
+     * Tekst nazwy hotelu
+     */
     @FXML private Text hotelName;
+    /**
+     * Pole na podsumowanie rezerwacji
+     */
     @FXML private TextArea summary;
+    /**
+     * Pole wyboru metody płatności
+     */
     @FXML private ChoiceBox<String> paymentMethod;
+    /**
+     * Suma do zapłaty
+     */
     private double paySum;
 
-
+    /**
+     * Handler dla przycisku poprawy danych
+     * @param actionEvent Event
+     */
     public void handleChangeButton(ActionEvent actionEvent) {
         SceneController sceneController = SceneController.getInstance();
         sceneController.activate("worker/reservationB");
     }
 
+    /**
+     * Sygnał do stworzenia podsumowania.
+     */
     public void makeSummary() {
         String result = "";
         DataFlowController dataFlowController = DataFlowController.getInstance();
@@ -68,11 +91,19 @@ public class ReservationCController implements Initializable {
         payAmount.setText("Kwota do zapłaty: " + paySum);
     }
 
+    /**
+     * Inicjator kontrolera.
+     * @param location Lokacja
+     * @param resources Zasoby
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         summary.setEditable(false);
     }
 
+    /**
+     * Sygnał że użytkownik się zalogował. Ustawia pola adresu i nazwy hotelu.
+     */
     public void userHasLogged() {
         LoggedUser loggedUser = LoggedUser.getINSTANCE();
         Hotel hotel  = HotelUtil.getByID(HotelUtil.getHotelList(),loggedUser.getUser().getId_hotel());
@@ -81,6 +112,10 @@ public class ReservationCController implements Initializable {
         hotelAddress.setText(hotel.getAddress());
     }
 
+    /**
+     * Handler przycisku potwierdzenia
+     * @param actionEvent Event
+     */
     public void handleConfirmButton(ActionEvent actionEvent) {
         DataFlowController dataFlowController = DataFlowController.getInstance();
 

@@ -9,7 +9,15 @@ import java.io.*;
 import java.net.Socket;
 import java.util.List;
 
+/**
+ * Klasa realizująca połączenie z serwerem. Właściwości połączenia są ustalone w klasie com.sadzbr.utils.Settings
+ */
 public class ServerConnection {
+    /**
+     * Wysłanie wiadomości do serwera
+     * @param m Wiadomość
+     * @return Odpowiedź serwera
+     */
     public List<Table> sendMessage(Message m) {
         List<Table> response = null;
         try (Socket socket = new Socket(Settings.SERVER_HOST, Settings.SERVER_PORT)) {
