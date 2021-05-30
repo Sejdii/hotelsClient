@@ -1,6 +1,7 @@
 package com.sadzbr.controller.view;
 
 import com.sadzbr.controller.SceneController;
+import com.sadzbr.service.LoggedUser;
 import javafx.event.ActionEvent;
 
 public class workerMenuController {
@@ -27,7 +28,8 @@ public class workerMenuController {
 
     public void handleLogout(ActionEvent actionEvent) {
         SceneController sceneController = SceneController.getInstance();
-        //TODO dodać kod wylogowania użytkownika
+        LoggedUser loggedUser = LoggedUser.getINSTANCE();
+        loggedUser.setUser(null);
         sceneController.activate("loginPanel");
     }
 }

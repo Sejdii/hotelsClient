@@ -34,6 +34,7 @@ public class Main extends Application {
         sceneController.addScene("worker/reservationA", new FXMLLoader(getClass().getResource(Resource.view("worker/reservationA"))));
         sceneController.addScene("worker/reservationB", new FXMLLoader(getClass().getResource(Resource.view("worker/reservationB"))));
         sceneController.addScene("worker/reservationC", new FXMLLoader(getClass().getResource(Resource.view("worker/reservationC"))));
+        sceneController.addScene("worker/reservationShow", new FXMLLoader(getClass().getResource(Resource.view("worker/reservationShow"))));
 
         sceneController.activate("loginPanel");
 

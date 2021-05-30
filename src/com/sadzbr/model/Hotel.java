@@ -5,7 +5,7 @@ public class Hotel extends Table {
     private String name;
 
     {
-        tableName = "hotel";
+        tableName = "Hotel";
     }
 
     public String getAddress() {

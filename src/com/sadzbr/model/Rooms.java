@@ -7,7 +7,7 @@ public class Rooms extends Table {
     private int room_nr;
 
     {
-        tableName = "rooms";
+        tableName = "Rooms";
     }
 
     public int getId_hotel() {

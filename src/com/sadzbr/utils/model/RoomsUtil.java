@@ -34,7 +34,7 @@ public class RoomsUtil {
         return rooms;
     }
 
-    static public ComboBox setCombobox(ComboBox comboBox, List<Table> tableList) {
+    static public ComboBox<Rooms> setCombobox(ComboBox<Rooms> comboBox, List<Table> tableList) {
         ObservableList<Rooms> rooms = convertToObservableList(tableList);
         comboBox.setItems(rooms);
         //comboBox.setValue((Rooms) tableList.get(0));

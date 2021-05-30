@@ -15,18 +15,18 @@
 
     <top>
         <VBox>
-            <Text text="NAZWA HOTELU" styleClass="h1"/>
-            <Text text="adres hotelu" />
+            <fx:include source="commons/reservationMenu.fxml"/>
+            <VBox>
+                <Text text="NAZWA HOTELU" styleClass="h1" fx:id="hotelName"/>
+                <Text text="adres hotelu" fx:id="hotelAddress" />
+            </VBox>
         </VBox>
     </top>
     <center>
         <GridPane hgap="10" vgap="10" styleClass="main-container">
             <TextField GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="form-control" promptText="Liczba osób" fx:id="numberOfPersons" />
-            <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="choice-box" value="Pakiet 1" fx:id="packageChoose">
-                <String fx:value="Pakiet 1"/>
-                <String fx:value="Pakiet 2"/>
-                <String fx:value="Pakiet 3"/>
-            </ChoiceBox>
+            <ComboBox GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="choice-box" fx:id="packageChoose">
+            </ComboBox>
 
             <DatePicker promptText="Data przyjazdu" GridPane.columnIndex="0" GridPane.rowIndex="1" fx:id="dateArrival" />
             <DatePicker promptText="Data odjazdu" GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="dateDeparture" />

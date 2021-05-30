@@ -57,4 +57,22 @@ public class PackageUtil {
         ServerConnection serverConnection = new ServerConnection();
         serverConnection.sendMessage(message);
     }
+
+    static public ComboBox<Package> setCombobox(ComboBox<Package> comboBox, List<Table> tableList) {
+        ObservableList<Package> packages = convertToObservableList(tableList);
+        comboBox.setItems(packages);
+        comboBox.setValue((Package) tableList.get(0));
+        comboBox.setConverter(new StringConverter<Package>() {
+            @Override
+            public String toString(Package object) {
+                return object.getName();
+            }
+
+            @Override
+            public Package fromString(String string) {
+                return null;
+            }
+        });
+        return comboBox;
+    }
 }

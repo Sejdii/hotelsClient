@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+
+<MenuBar styleClass="worker-menubar"
+        xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.sadzbr.controller.view.ReservationMenuController"
+            >
+    <Menu text="Rezerwacje">
+        <MenuItem text="Wyświetl aktualne" onAction="#handleShowReservation"/>
+        <MenuItem text="Przeprowadź rezerwacje" onAction="#handleMakeReservation"/>
+    </Menu>
+    <Menu text="Konto">
+        <MenuItem text="Wyloguj się" onAction="#handleLogout"/>
+    </Menu>
+</MenuBar>

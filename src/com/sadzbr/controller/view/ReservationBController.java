@@ -3,7 +3,14 @@ package com.sadzbr.controller.view;
 import com.sadzbr.controller.DataFlowController;
 import com.sadzbr.controller.ErrorController;
 import com.sadzbr.controller.SceneController;
+import com.sadzbr.model.Hotel;
+import com.sadzbr.model.Rooms;
+import com.sadzbr.model.Table;
+import com.sadzbr.service.LoggedUser;
 import com.sadzbr.utils.Validator;
+import com.sadzbr.utils.model.HotelUtil;
+import com.sadzbr.utils.model.ReservationsUtil;
+import com.sadzbr.utils.model.RoomsUtil;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -11,16 +18,25 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Kontroler dla sceny B rezerwacji
+ */
 public class ReservationBController implements Initializable {
+    @FXML private Text hotelAddress;
+    @FXML private Text hotelName;
     @FXML private CheckBox newsletter;
-    @FXML private ChoiceBox roomChoose;
+    @FXML private ComboBox<Rooms> roomChoose;
     @FXML private Text errorHandler;
     @FXML private TextField flatNr;
     @FXML private TextField homeNr;
@@ -52,15 +68,21 @@ public class ReservationBController implements Initializable {
                 }
             }
         });
-
-
     }
 
+    /**
+     * Wywołuje się gdy zostanie naciśnięty przycisk powrotu
+     * @param actionEvent Event
+     */
     public void handleReturnButton(ActionEvent actionEvent) {
         SceneController sceneController = SceneController.getInstance();
         sceneController.activate("worker/reservationA");
     }
 
+    /**
+     * Wywołuje się gdy zostanie naciśnięty przycisk rezerwacji
+     * @param actionEvent Event
+     */
     public void handleReservationButton(ActionEvent actionEvent) {
         //Validation
         ErrorController errorController = ErrorController.getInstance();
@@ -82,7 +104,8 @@ public class ReservationBController implements Initializable {
             // sending data to another scenes
             DataFlowController dataFlowController = DataFlowController.getInstance();
             dataFlowController.addValue("email", email.getText());
-            dataFlowController.addValue("room", roomChoose.getValue().toString());
+            dataFlowController.addValue("roomID", String.valueOf(roomChoose.getValue().getId()));
+            dataFlowController.addValue("roomNr", String.valueOf(roomChoose.getValue().getRoom_nr()));
             dataFlowController.addValue("newsletter", Boolean.toString(newsletter.isSelected()));
             dataFlowController.addValue("name", name.getText());
             dataFlowController.addValue("surname", surname.getText());
@@ -96,10 +119,42 @@ public class ReservationBController implements Initializable {
             FXMLLoader fxmlLoader = sceneController.getLoader("worker/reservationC");
             ReservationCController reservationCController = fxmlLoader.getController();
             reservationCController.makeSummary(); // send signal to ReservationC to make a summary
+            reservationCController.userHasLogged();
+
             sceneController.activate("worker/reservationC");
             errorHandler.setText("");
         } else {
             errorHandler.setText(errorController.getAllMessages());
         }
+    }
+
+    /**
+     * Wykonuje się gdy wysłany zostanie sygnał że są dostępne pokoje. Pobiera listę dostępnych pokoi i ustawia combobox
+     */
+    public void roomsAreAvailable() {
+        DataFlowController dataFlowController = DataFlowController.getInstance();
+        int numberOfPersons = Integer.parseInt(dataFlowController.getValue("numberOfPersons"));
+        Date dateArrival;
+        Date dateDeparture;
+        try {
+            dateArrival = new SimpleDateFormat("yyyy-MM-dd").parse(dataFlowController.getValue("dateArrival"));
+            dateDeparture = new SimpleDateFormat("yyyy-MM-dd").parse(dataFlowController.getValue("dateDeparture"));
+
+            List<Table> tableList = ReservationsUtil.getAvailabilityRoomsList(numberOfPersons, dateArrival, dateDeparture);
+            roomChoose = RoomsUtil.setCombobox(roomChoose, tableList);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Wykonuje się gdy zostanie wysłany sygnał że użytkownik się zalogował i jest pracownik.
+     */
+    public void userHasLogged() {
+        LoggedUser loggedUser = LoggedUser.getINSTANCE();
+        Hotel hotel  = HotelUtil.getByID(HotelUtil.getHotelList(),loggedUser.getUser().getId_hotel());
+        assert hotel != null : "Hotel is null";
+        hotelName.setText(hotel.getName());
+        hotelAddress.setText(hotel.getAddress());
     }
 }

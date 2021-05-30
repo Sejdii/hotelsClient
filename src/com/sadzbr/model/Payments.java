@@ -5,7 +5,7 @@ public class Payments extends Table {
     private double amount;
 
     {
-        tableName = "payments";
+        tableName = "Payments";
     }
 
     public String getForm() {

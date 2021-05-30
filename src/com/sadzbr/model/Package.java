@@ -7,7 +7,7 @@ public class Package extends Table {
     private String description;
 
     {
-        tableName = "package";
+        tableName = "Package";
     }
 
     public int getId_hotel() {

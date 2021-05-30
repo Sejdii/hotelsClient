@@ -11,7 +11,7 @@ public class User extends Table {
     private String user_type;
 
     {
-        tableName = "user";
+        tableName = "User";
     }
 
     public int getId_hotel() {

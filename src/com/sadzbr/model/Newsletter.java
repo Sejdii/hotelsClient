@@ -5,7 +5,7 @@ public class Newsletter extends Table {
     private int id_client;
 
     {
-        tableName = "newsletter";
+        tableName = "Newsletter";
     }
 
     public String getEmail() {

@@ -11,18 +11,21 @@
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.sadzbr.controller.view.ReservationCController"
-            prefHeight="400.0" prefWidth="600.0">
+            >
 
     <top>
         <VBox>
-            <Text text="NAZWA HOTELU" styleClass="h1"/>
-            <Text text="adres hotelu" />
+            <fx:include source="commons/reservationMenu.fxml"/>
+            <VBox>
+                <Text text="NAZWA HOTELU" styleClass="h1" fx:id="hotelName"/>
+                <Text text="adres hotelu" fx:id="hotelAddress" />
+            </VBox>
         </VBox>
     </top>
 
     <center>
         <VBox styleClass="main-container, display-center">
-            <Text text="Do zapłaty: X"  />
+            <Text text="Do zapłaty: X" fx:id="payAmount" />
 
             <TextArea promptText="Podsumowanie zamówienia" minHeight="250" fx:id="summary" />
 
@@ -33,7 +36,7 @@
             </ChoiceBox>
 
             <GridPane styleClass="main-container" hgap="25">
-                <Button text="Zatwierdź" styleClass="button-grid-button" GridPane.columnIndex="0" />
+                <Button text="Zatwierdź" styleClass="button-grid-button" GridPane.columnIndex="0" onAction="#handleConfirmButton" />
                 <Button text="Popraw" styleClass="button-grid-button" GridPane.columnIndex="1" onAction="#handleChangeButton" />
             </GridPane>
         </VBox>

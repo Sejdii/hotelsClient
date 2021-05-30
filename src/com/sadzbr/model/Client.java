@@ -10,7 +10,7 @@ public class Client extends Table {
     private String city;
 
     {
-        tableName = "client";
+        tableName = "Client";
     }
 
     public String getName() {

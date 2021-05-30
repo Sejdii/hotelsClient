@@ -3,16 +3,23 @@ package com.sadzbr.controller.view;
 import com.sadzbr.controller.DataFlowController;
 import com.sadzbr.controller.ErrorController;
 import com.sadzbr.controller.SceneController;
+import com.sadzbr.model.Hotel;
+import com.sadzbr.model.Reservations;
+import com.sadzbr.service.LoggedUser;
 import com.sadzbr.utils.Validator;
+import com.sadzbr.utils.model.HotelUtil;
+import com.sadzbr.model.Package;
+
+import com.sadzbr.utils.model.PackageUtil;
+import com.sadzbr.utils.model.ReservationsUtil;
+import com.sadzbr.utils.model.TableUtil;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DateCell;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -20,11 +27,13 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class ReservationAController implements Initializable {
+    @FXML private Text hotelAddress;
+    @FXML private Text hotelName;
     @FXML private Text errorHandler;
     @FXML private DatePicker dateDeparture;
     @FXML private DatePicker dateArrival;
     @FXML private TextField numberOfPersons;
-    @FXML private ChoiceBox packageChoose;
+    @FXML private ComboBox<Package> packageChoose;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -59,7 +68,6 @@ public class ReservationAController implements Initializable {
     }
 
     public void handleCheckAvailability(ActionEvent actionEvent) {
-        //TODO sprawdzanie czy pokój jest dostępny
         //Validation
         ErrorController errorController = ErrorController.getInstance();
         Validator.reservationDates(dateArrival.getValue(), dateDeparture.getValue());
@@ -68,20 +76,45 @@ public class ReservationAController implements Initializable {
         }
         Validator.numberOfPersons(Integer.parseInt(numberOfPersons.getText()));
 
+        if(errorController.isEmpty()) { // inputs are okey, we can check availability
+            boolean isAvailable = ReservationsUtil.checkAvailability(Integer.parseInt(numberOfPersons.getText()), ReservationsUtil.convertDateFromLocal(dateArrival.getValue()), ReservationsUtil.convertDateFromLocal(dateDeparture.getValue()));
+            if(!isAvailable) {
+                errorController.addMessage("Brak dostępnych pokoi dla podanych danych");
+            }
+        }
+
         if(errorController.isEmpty()) {
             // everything is okey we can go to next scene
             // sending data to another scenes
             DataFlowController dataFlowController = DataFlowController.getInstance();
             dataFlowController.addValue("numberOfPersons", numberOfPersons.getText());
-            dataFlowController.addValue("package", packageChoose.getValue().toString());
+            dataFlowController.addValue("package", String.valueOf(packageChoose.getValue().getId()));
             dataFlowController.addValue("dateArrival", dateArrival.getValue().toString());
             dataFlowController.addValue("dateDeparture", dateDeparture.getValue().toString());
 
+
             SceneController sceneController = SceneController.getInstance();
+
+            FXMLLoader fxmlLoader = sceneController.getLoader("worker/reservationB");
+            ReservationBController reservationBController = fxmlLoader.getController();
+            reservationBController.userHasLogged();
+            reservationBController.roomsAreAvailable();
+
             sceneController.activate("worker/reservationB");
             errorHandler.setText("");
         } else {
             errorHandler.setText(errorController.getAllMessages());
         }
+    }
+
+    public void userHasLogged() {
+        LoggedUser loggedUser = LoggedUser.getINSTANCE();
+        Hotel hotel  = HotelUtil.getByID(HotelUtil.getHotelList(),loggedUser.getUser().getId_hotel());
+        assert hotel != null : "Hotel is null";
+        hotelName.setText(hotel.getName());
+        hotelAddress.setText(hotel.getAddress());
+
+        /* SETTING FORMS INPUTS */
+        packageChoose = PackageUtil.setCombobox(packageChoose, PackageUtil.excludeByHotelId(PackageUtil.getPackageList(), loggedUser.getUser().getId_hotel()));
     }
 }
